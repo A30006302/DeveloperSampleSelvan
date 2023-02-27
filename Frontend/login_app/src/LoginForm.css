@@ -6,5 +6,11 @@
   align-content: center;
   max-width: 25vw;
   background-color:lightgray;
-  padding: 2em;
+  padding: 0em;
+}
+label {
+  margin-bottom: 10px;
+}
+.button {
+  margin-top: 40px;
 }

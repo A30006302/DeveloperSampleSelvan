@@ -1,5 +1,7 @@
 using Xunit;
 
+// developer selvan seeman
+// 02/26/2023
 namespace DeveloperSample.ClassRefactoring
 {
     public class ClassRefactorTest
@@ -9,7 +11,7 @@ namespace DeveloperSample.ClassRefactoring
         {
             var swallowFactory = new SwallowFactory();
             var swallow = swallowFactory.GetSwallow(SwallowType.African);
-            Assert.Equal(22, swallow.GetAirspeedVelocity());
+            Assert.Equal(Speed.AfricanSwallowSpeed, swallow.GetAirspeedVelocity());
         }
 
         [Fact]
@@ -18,7 +20,7 @@ namespace DeveloperSample.ClassRefactoring
             var swallowFactory = new SwallowFactory();
             var swallow = swallowFactory.GetSwallow(SwallowType.African);
             swallow.ApplyLoad(SwallowLoad.Coconut);
-            Assert.Equal(18, swallow.GetAirspeedVelocity());
+            Assert.Equal(Speed.LadenAfricanSwallowSpeed, swallow.GetAirspeedVelocity());
         }
 
         [Fact]
@@ -26,7 +28,7 @@ namespace DeveloperSample.ClassRefactoring
         {
             var swallowFactory = new SwallowFactory();
             var swallow = swallowFactory.GetSwallow(SwallowType.European);
-            Assert.Equal(20, swallow.GetAirspeedVelocity());
+            Assert.Equal(Speed.EuropeanSwallowSpeed, swallow.GetAirspeedVelocity());
         }
 
         [Fact]
@@ -35,7 +37,7 @@ namespace DeveloperSample.ClassRefactoring
             var swallowFactory = new SwallowFactory();
             var swallow = swallowFactory.GetSwallow(SwallowType.European);
             swallow.ApplyLoad(SwallowLoad.Coconut);
-            Assert.Equal(16, swallow.GetAirspeedVelocity());
+            Assert.Equal(Speed.LadenEuropeanSwallowSpeed, swallow.GetAirspeedVelocity());
         }
     }
 }

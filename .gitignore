@@ -3,3 +3,7 @@ obj
 node_modules
 debug
 release
+/.vs
+/.gitignore
+/.gitignore
+/Frontend/package-lock.json

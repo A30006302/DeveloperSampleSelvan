@@ -1,5 +1,7 @@
 using Xunit;
 
+// developer selvan seeman
+// 02/26/2023
 namespace DeveloperSample.Container
 {
     internal interface IContainerTestInterface
@@ -12,11 +14,12 @@ namespace DeveloperSample.Container
 
     public class ContainerTest
     {
-        [Fact(Skip="Not implemented")]
+        [Fact]
         public void CanBindAndGetService()
         {
+            ContainerTestClass containerTestClassObject = new ContainerTestClass();
             var container = new Container();
-            container.Bind(typeof(IContainerTestInterface), typeof(ContainerTestClass));
+            container.Bind<ContainerTestClass>(typeof(IContainerTestInterface), containerTestClassObject);
             var testInstance = container.Get<IContainerTestInterface>();
             Assert.IsType<ContainerTestClass>(testInstance);
         }

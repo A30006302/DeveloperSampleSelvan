@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using System.Threading;
 using Xunit;
 
+// developer selvan seeman
+// 02/26/2023
 namespace DeveloperSample.Syncing
 {
     public class SyncTest
@@ -15,7 +17,7 @@ namespace DeveloperSample.Syncing
             Assert.Equal(items.Count, result.Count);
         }
 
-        [Fact(Skip="Not implemented")]
+        [Fact]
         public void ItemsOnlyInitializeOnce()
         {
             var debug = new SyncDebug();

@@ -1,5 +1,7 @@
 using System;
 
+// developer selvan seeman
+// 02/26/2023
 namespace DeveloperSample.Algorithms
 {
     public static class Algorithms

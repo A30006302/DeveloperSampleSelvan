@@ -1,5 +1,7 @@
 using System;
 
+// developer selvan seeman
+// 02/26/2023
 namespace DeveloperSample.ClassRefactoring
 {
     public enum SwallowType
@@ -12,6 +14,15 @@ namespace DeveloperSample.ClassRefactoring
         None, Coconut
     }
 
+    public enum Speed
+    {
+        None = 0,
+        AfricanSwallowSpeed = 22,
+        LadenAfricanSwallowSpeed = 18,
+        EuropeanSwallowSpeed = 20,
+        LadenEuropeanSwallowSpeed = 16
+    }
+
     public class SwallowFactory
     {
         public Swallow GetSwallow(SwallowType swallowType) => new Swallow(swallowType);
@@ -19,8 +30,8 @@ namespace DeveloperSample.ClassRefactoring
 
     public class Swallow
     {
-        public SwallowType Type { get; }
-        public SwallowLoad Load { get; private set; }
+        private SwallowType Type { get; }
+        private SwallowLoad Load { get; set; }
 
         public Swallow(SwallowType swallowType)
         {
@@ -32,25 +43,32 @@ namespace DeveloperSample.ClassRefactoring
             Load = load;
         }
 
-        public double GetAirspeedVelocity()
+        public Speed GetAirspeedVelocity()
         {
+            Speed speed = Speed.None;
+
             if (Type == SwallowType.African && Load == SwallowLoad.None)
             {
-                return 22;
+                speed = Speed.AfricanSwallowSpeed;
             }
-            if (Type == SwallowType.African && Load == SwallowLoad.Coconut)
+            else if (Type == SwallowType.African && Load == SwallowLoad.Coconut)
             {
-                return 18;
+                speed = Speed.LadenAfricanSwallowSpeed;
             }
-            if (Type == SwallowType.European && Load == SwallowLoad.None)
+            else if (Type == SwallowType.European && Load == SwallowLoad.None)
             {
-                return 20;
+                speed = Speed.EuropeanSwallowSpeed;
             }
-            if (Type == SwallowType.European && Load == SwallowLoad.Coconut)
+            else if (Type == SwallowType.European && Load == SwallowLoad.Coconut)
             {
-                return 16;
+                speed = Speed.LadenEuropeanSwallowSpeed;
             }
-            throw new InvalidOperationException();
+            else
+            {
+                throw new InvalidOperationException();
+            }
+
+            return speed;
         }
     }
 }

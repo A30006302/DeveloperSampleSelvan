@@ -1,10 +1,14 @@
 using System;
+using System.Diagnostics;
 
+// developer selvan seeman
+// 02/26/2023
 namespace DeveloperSample.Container
 {
     public class Container
     {
-        public void Bind(Type interfaceType, Type implementationType) => throw new NotImplementedException();
-        public T Get<T>() => throw new NotImplementedException();
+        private object containerTestClass;
+        public void Bind<T>(Type interfaceType, T implementationType) => containerTestClass = implementationType;
+        public object Get<T>() => containerTestClass; 
     }
 }

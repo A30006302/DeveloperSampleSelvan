@@ -5,6 +5,8 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
+// developer selvan seeman
+// 02/26/2023
 namespace DeveloperSample.Syncing
 {
     public class SyncDebug
@@ -12,12 +14,22 @@ namespace DeveloperSample.Syncing
         public List<string> InitializeList(IEnumerable<string> items)
         {
             var bag = new ConcurrentBag<string>();
-            Parallel.ForEach(items, async i =>
+            ParallelLoopResult tasks;
+            tasks = Parallel.ForEach(items, async i =>
             {
                 var r = await Task.Run(() => i).ConfigureAwait(false);
                 bag.Add(r);
             });
+            
+            // wait until all thread execution finishes
+            while (bag.ToList().Count < items.Count())
+            {
+                Thread.Sleep(100);
+                continue;
+            }
+
             var list = bag.ToList();
+
             return list;
         }
 
@@ -26,7 +38,7 @@ namespace DeveloperSample.Syncing
             var itemsToInitialize = Enumerable.Range(0, 100).ToList();
 
             var concurrentDictionary = new ConcurrentDictionary<int, string>();
-            var threads = Enumerable.Range(0, 3)
+            var threads = Enumerable.Range(0, 1)
                 .Select(i => new Thread(() => {
                     foreach (var item in itemsToInitialize)
                     {
